@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carrie</title>
+    <style>
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin-bottom: 10px;
+    }
+
+.video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .controls img {
+      width: 80px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      border-radius: 8px;
+      margin: 0 15px;
+    }
+
+    .controls img:hover {
+      transform: scale(1.1);
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+    <main>
+     <section class="video-container">
+      <video id="myVideo" muted poster="media/carriehorror.jpg">
+           <source src="media/horror.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <div class="controls">
+      <img src="media/fendi.png" alt="Play" id="playBtn">
+      <img src="media/cosmo.png" alt="Stop" id="stopBtn">
+    </div>
+
+    <section>
+      <audio id="myAudio" src="media/horrormusic.mp3" loop></audio>
+    </section>
+  </main>
+
+  <script>
+    const video = document.getElementById('myVideo');
+    const audio = document.getElementById('myAudio');
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+
+    playBtn.addEventListener('click', () => {
+      video.play();
+      audio.muted = false;
+      audio.play();
+    });
+
+    stopBtn.addEventListener('click', () => {
+      video.pause();
+      video.currentTime = 0;
+      audio.pause();
+      audio.currentTime = 0;
+      audio.muted = true;
+    });
+  </script>
+</body>
+</html>
